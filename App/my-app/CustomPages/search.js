@@ -1,48 +1,29 @@
-import React, { useState } from 'react';
-import { TouchableOpacity, ImageBackground, View, TextInput, Text, Image, ScrollView, StyleSheet } from 'react-native';
+import React, { useState} from 'react';
+import {View, Text, ScrollView, StyleSheet } from 'react-native';
 
-function Search () {
-  const [query, setQuery] = useState('');
+function Search ({navigation}) {
   const [results, setResults] = useState([]);
-
-  const API_KEY = '43342643-b240d853790055fe0f568f00d';
-  const URL = `https://pixabay.com/api/?key=${API_KEY}&q=`;
-
-  const handleChange = (text) => {
-    setQuery(text);
-  };
-
-  const handleSubmit = async () => {
-    try {
-      const response = await fetch(URL + encodeURIComponent(query));
-      const data = await response.json();
-      setResults(data.hits);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  const URL = `https://api-fantasygame.eu-4.evennode.com/get-characters/`
+  
+  async function getId () {
+  try {
+    const response = await fetch(URL);
+    const data = await response.json();
+    setResults(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+  getId();
 
   return (
     <View style={styles.container}>
-      
-          <TextInput
-            style={styles.input}
-            placeholder="Alors la recherche ? ..."
-            placeholderTextColor="black"
-            value={query}
-            onChangeText={handleChange}
-          />
-          <TouchableOpacity style={[styles.button, { borderColor: "gray" }]} onPress={handleSubmit}>
-            <Text style={styles.buttonText}>Rechercher</Text>
-          </TouchableOpacity>
-          
+
           <ScrollView style={styles.results}>
             {results.map((result) => (
-              <Image
-                key={result.id}
-                source={{ uri: result.previewURL }}
-                style={styles.image}
-              />
+              <Text key={result.id}
+              source={{ uri: result.previewURL }}
+              style={styles.text} onPress={() => navigation.navigate('Personnage', { id: result.id })}>{result.name}{"\n"}{"\n"}{result.description}{"\n"}{"\n"}Rarity:{"\n"}{result.rarity}/5</Text>
             ))}
           </ScrollView>
           
@@ -74,7 +55,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     
   },
-  image: {
+  text: {
     width: '90%' ,
     margin: 20,
     height: 300,
