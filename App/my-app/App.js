@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 
 function StackNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Home" screenOptions={{headerStyle: { backgroundColor: 'gray' } }}>
+    <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false }}>
       <Stack.Screen name="Acceuil" component={Home} />
       <Stack.Screen name="Rechercher" component={Search}/>
       <Stack.Screen name="A propos" component={Aboutus}/> 
@@ -23,7 +23,7 @@ function StackNavigator() {
 function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator  screenOptions={{headerStyle: { backgroundColor: 'gray' }, tabBarStyle:{backgroundColor: 'gray'}, tabBarInactiveTintColor: 'black' }} tabBarOptions={{}}>
+      <Tab.Navigator  screenOptions={{headerStyle: { backgroundColor: '#3B5998'}, tabBarStyle:{backgroundColor: '#3B5998'}, tabBarInactiveTintColor: 'black', tabBarActiveTintColor: '#c0c0c0' }} tabBarOptions={{}}>
         <Tab.Screen name="Accueil" component={StackNavigator} />
         <Tab.Screen name="Rechercher" component={Search}/>
         <Tab.Screen name="A propos" component={Aboutus}/>

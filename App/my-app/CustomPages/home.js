@@ -9,7 +9,7 @@ function Home({ navigation }) {
     <View style={styles.container}>    
             <Text style={styles.text}>Bienvenue!</Text>
             <StatusBar style="auto" />
-            <TouchableOpacity style={[styles.button, { borderColor: "gray" }]} onPress={() => navigation.navigate('Rechercher')}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Rechercher')}>
                 <Text style={styles.buttonText}>Aller à la page Rechercher</Text>
             </TouchableOpacity>
             <Button title="A propos" onPress={() => navigation.navigate('A propos')}></Button>
@@ -40,13 +40,13 @@ const styles = StyleSheet.create({
     marginLeft: '20%',
     padding: 10,
     alignItems: 'center',
-    borderColor: 'gray', 
-    backgroundColor: 'gray',
+    borderColor: '#c0c0c0', 
+    backgroundColor: '#3B5998',
   },
   buttonText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: 'white', 
+    color: '#c0c0c0', 
   },
 });
 
