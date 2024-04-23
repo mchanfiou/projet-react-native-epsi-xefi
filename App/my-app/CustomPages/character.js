@@ -9,8 +9,7 @@ function Character({route}){
         try {
           const response = await fetch(`https://api-fantasygame.eu-4.evennode.com/get-characters/${id}`);
           const data = await response.json();
-          setResults(data);
-          results.map((result) => id = result.id);
+          setResults(data);         
         } catch (error) {
           console.error('Error fetching data:', error);
         }

@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import {View, Text, ScrollView, StyleSheet } from 'react-native';
 
-function Search ({navigation}) {
+function List ({navigation}) {
   const [results, setResults] = useState([]);
   const URL = `https://api-fantasygame.eu-4.evennode.com/get-characters/`
   
@@ -36,6 +36,7 @@ function Search ({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#c0c0c0"
   },
   input: {
     width: '75%',
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     height: 300,
     marginBottom: 25,
     alignContent: 'center',
+    color: '#3B5998'
   },
   imageBG: {
     flex: 1,
@@ -84,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Search;
+export default List;
